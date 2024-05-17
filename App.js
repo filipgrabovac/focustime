@@ -10,6 +10,7 @@ import { Focus } from "./src/features/Focus";
 import React, { useState } from "react";
 import { Timer } from "./src/features/Timer";
 import { FocusHistory } from "./src/features/FocusHistory";
+
 export default function App() {
   const [currentSubject, setCurrentSubject] = useState(null);
 

@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { View, Text, Vibration } from 'react-native';
-import { ProgressBar } from 'react-native-paper';
-import { Countdown } from '../components/CountdownComponent';
-import { RoundedButton } from '../components/RoundedButton';
-import { spacing } from '../utils/sizes';
-import { colors } from '../utils/colors';
-import { Timing } from './Timing';
-import { useKeepAwake } from 'expo-keep-awake';
+import { useState } from "react";
+import { View, Text, Vibration } from "react-native";
+import { ProgressBar } from "react-native-paper";
+import { Countdown } from "../components/CountdownComponent";
+import { RoundedButton } from "../components/RoundedButton";
+import { spacing } from "../utils/sizes";
+import { colors } from "../utils/colors";
+import { Timing } from "./Timing";
+import { useKeepAwake } from "expo-keep-awake";
 
 const PATTERN = [1 * 1000, 1 * 1000, 1 * 1000, 1 * 1000, 1 * 1000];
 
 export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
   useKeepAwake();
-  
+
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
   const [minutes, setMinutes] = useState(0.1);
@@ -22,7 +22,7 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
     setIsStarted(false);
     setProgress(1);
     reset();
-    onTimerEnd(focusSubject)
+    onTimerEnd(focusSubject);
   };
   return (
     <View style={styles.container}>
@@ -54,14 +54,14 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
       <View style={styles.buttonWrapper}>
         {isStarted ? (
           <RoundedButton
-            title={'pause'}
+            title={"pause"}
             onPress={() => {
               setIsStarted(false);
             }}
           />
         ) : (
           <RoundedButton
-            title={'start'}
+            title={"start"}
             onPress={() => {
               setIsStarted(true);
             }}
@@ -69,7 +69,7 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
         )}
       </View>
       <View style={styles.clearSubjectWrapper}>
-        <RoundedButton size={70} title={'-'} onPress={clearSubject} />
+        <RoundedButton size={70} title={"-"} onPress={clearSubject} />
       </View>
     </View>
   );
@@ -81,31 +81,31 @@ const styles = {
   },
   timingWrapper: {
     flex: 0.1,
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingTop: spacing.xxl,
   },
   clearSubjectWrapper: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   countdown: {
     flex: 0.5,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   buttonWrapper: {
     flex: 0.3,
-    flexDirection: 'row',
+    flexDirection: "row",
     padding: spacing.md,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     color: colors.white,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
   },
   task: {
     color: colors.white,
-    textAlign: 'center',
+    textAlign: "center",
   },
 };
